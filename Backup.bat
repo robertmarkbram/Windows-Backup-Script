@@ -73,6 +73,8 @@
 ::    %HOMEPATH%\myApps\batch\backup-settings-for-%computername%.bat
 :: - Added extra comments and pretty to output.
 :: - Specified contents of invisible.vbs.
+:: Tuesday, 20th of October 2020, 11:56:59 PM
+:: - Quote script when setting up scheduled command.
 
 :: =======================================
 :: EDIT THIS SECTION.
@@ -157,7 +159,7 @@ GOTO :BACKUP
 echo Scheduling task: %0.
 :: Schedule task.
 echo Scheduling task: "wscript.exe %~dp0invisible.vbs %~dp0%~n0"
-schtasks /create /SC HOURLY /MO %HOURS% /tn "%SCHED_TASK_LABEL%" /tr "wscript.exe %~dp0invisible.vbs %~dp0%~n0"
+schtasks /create /SC HOURLY /MO %HOURS% /tn "%SCHED_TASK_LABEL%" /tr "wscript.exe \"%~dp0invisible.vbs\" \"%~dp0%~n0\""
 GOTO :END
 
 :: Run backup tasks.
