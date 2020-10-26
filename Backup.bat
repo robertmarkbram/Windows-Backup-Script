@@ -75,6 +75,8 @@
 :: - Specified contents of invisible.vbs.
 :: Tuesday, 20th of October 2020, 11:56:59 PM
 :: - Quote script when setting up scheduled command.
+:: Monday, 26th of October 2020, 11:51:23 AM
+:: - Added -ssw switch to 7z to backup files even if they are in use.
 
 :: =======================================
 :: EDIT THIS SECTION.
@@ -202,6 +204,7 @@ For /L %%i in (1,1,%MAX%) Do (
 
       :: Backup everything except excluded files and directories.
       %ZIP% a "%BACKUP_HOME%\!LBL%%i!_%YYYYMMDD_HHMMSS%" ^
+         -ssw                  ^
          -x^^!".git"           ^
          -x^^!"noupload"       ^
          -x^^!"out"            ^
